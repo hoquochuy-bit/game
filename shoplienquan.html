@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Liên Quân</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background: #1e90ff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .skin-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .skin-item {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .skin-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .skin-item h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .skin-item p {
+      color: #555;
+    }
+
+    .skin-item button {
+      background: #1e90ff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .skin-item button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      background: #1e90ff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 20px;
+    }
+
+    .cart-container, .recharge-container, .withdraw-container, .spin-container {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-container table, .recharge-container form, .withdraw-container form {
+      width: 100%;
+    }
+
+    .cart-container table {
+      border-collapse: collapse;
+    }
+
+    .cart-container th, .cart-container td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .recharge-container input, .withdraw-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .recharge-container button, .withdraw-container button, .spin-container button {
+      background: #1e90ff;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .recharge-container button:hover, .withdraw-container button:hover, .spin-container button:hover {
+      background: #0056b3;
+    }
+
+    .spin-wheel {
+      width: 300px;
+      height: 300px;
+      border: 10px solid #1e90ff;
+      border-radius: 50%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .spin-wheel div {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background: white;
+      transform-origin: 100% 100%;
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+
+    .spin-wheel div:nth-child(1) { transform: rotate(0deg); background: #ff9999; }
+    .spin-wheel div:nth-child(2) { transform: rotate(45deg); background: #99ff99; }
+    .spin-wheel div:nth-child(3) { transform: rotate(90deg); background: #9999ff; }
+    .spin-wheel div:nth-child(4) { transform: rotate(135deg); background: #ffff99; }
+    .spin-wheel div:nth-child(5) { transform: rotate(180deg); background: #ff66ff; }
+    .spin-wheel div:nth-child(6) { transform: rotate(225deg); background: #66ffff; }
+    .spin-wheel div:nth-child(7) { transform: rotate(270deg); background: #ff9966; }
+    .spin-wheel div:nth-child(8) { transform: rotate(315deg); background: #cccccc; }
+
+    .spin-button {
+      display: block;
+      margin: 20px auto;
+      background: #1e90ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .spin-button:hover {
+      background: #0056b3;
+    }
+
+    #spin-result {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Shop Liên Quân</h1>
+    <nav>
+      <a href="#home">Trang chủ</a>
+      <a href="#skins">Skin Liên Quân</a>
+      <a href="#cart">Giỏ hàng</a>
+      <a href="#recharge">Nạp thẻ</a>
+      <a href="#withdraw">Rút Quân Huy</a>
+      <a href="#spin">Vòng quay</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="skins">
+      <h2>Danh sách Skin nổi bật</h2>
+      <div class="skin-list">
+        <div class="skin-item">
+          <img src="skin1.jpg" alt="Skin Butterfly">
+          <h3>Butterfly - Thiên Sứ Công Nghệ</h3>
+          <p>Giá: 299 Quân Huy</p>
+          <button onclick="addToCart('Butterfly - Thiên Sứ Công Nghệ', 299)">Thêm vào giỏ hàng</button>
+        </div>
+        <div class="skin-item">
+          <img src="skin2.jpg" alt="Skin Murad">
+          <h3>Murad - Siêu Việt</h3>
+          <p>Giá: 499 Quân Huy</p>
+          <button onclick="addToCart('Murad - Siêu Việt', 499)">Thêm vào giỏ hàng</button>
+        </div>
+        <div class="skin-item">
+          <img src="skin3.jpg" alt="Skin Violet">
+          <h3>Violet - Phi Công Trẻ</h3>
+          <p>Giá: 399 Quân Huy</p>
+          <button onclick="addToCart('Violet - Phi Công Trẻ', 399)">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart" class="cart-container">
+      <h2>Giỏ hàng của bạn</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tên Skin</th>
+            <th>Giá</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+        </tbody>
+      </table>
+      <p id="total-price">Tổng giá: 0 Quân Huy</p>
+    </section>
+
+    <section id="recharge" class="re
